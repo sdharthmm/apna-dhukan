@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apna Dhukan - Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: consolas;
+            display: flex;
+            height: 100vh;
+        }
+
+        /* LEFT PANEL */
+        .left-panel {
+            width: 50%;
+            background: #FFD400;
+            position: relative;
+        }
+
+        h2 {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5em;
+            color: transparent;
+            text-transform: uppercase;
+        }
+
+        h2 span:nth-child(1){
+            position:absolute;
+            top:0; left:0;
+            color: #000;
+            transition:0.5s;
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+        }
+
+        h2:hover span:nth-child(1){
+            transform:translateY(-15px); 
+        }
+
+        h2 span:nth-child(2){
+            position:absolute;
+            top:0; left:0;
+            color: #000;
+            transition:0.5s;
+            clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+        }
+
+        h2:hover span:nth-child(2){
+            transform:translateY(15px); 
+        }
+
+        h2 span:nth-child(3){
+            position:absolute;
+            top:50%; left: 0;
+            transform:translateY(-50%) scaleY(0);
+            width: 100%;
+            color: #000;
+            background:#fff;
+            font-size: 0.25em;
+            font-weight: 600;
+            letter-spacing:0.5em;
+            text-align:center;
+            padding: 5px 0;
+            transition:0.5s;
+        }
+
+        h2:hover span:nth-child(3){
+            transform:translateY(-50%) scaleY(1);
+        }
+
+        /* RIGHT PANEL */
+        .right-panel {
+            width: 50%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .register-box {
+            width: 450px;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        /* TYPEWRITER */
+        .cursor {
+            position: relative;
+            width: 22em;
+            border-right: 2px solid rgba(0,0,0,.75);
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            font-family: 'Anonymous Pro', monospace;
+            margin-bottom: 20px;
+        }
+
+        .typewriter-animation {
+            animation:
+              typewriter 4s steps(40) 1s 1 normal both,
+              blinkingCursor 500ms steps(40) infinite normal;
+        }
+
+        @keyframes typewriter {
+          from { width: 0; }
+          to { width: 100%; }
+        }
+
+        @keyframes blinkingCursor{
+          from { border-right-color: rgba(0,0,0,.75); }
+          to { border-right-color: transparent; }
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin: 12px 0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: #FFD400;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #e6c200;
+        }
+
+        .error {
+            color: red;
+            font-size: 13px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="left-panel">
+    <h2>
+        REGISTER HERE!!!
+        <span>REGISTER HERE!!!</span>
+        <span>REGISTER HERE!!!</span>
+        <span>APNA DHUKAN</span>
+    </h2>
+</div>
+
+<div class="right-panel">
+    <div class="register-box">
+
+        <p class="cursor typewriter-animation">
+            Enter a unique username...
+        </p>
+
+        <input type="text" id="username" placeholder="Username">
+        <div class="error" id="userError">Username already exists</div>
+
+        <input type="password" id="password" placeholder="Create Password">
+
+        <input type="password" id="confirmPassword" placeholder="Re-enter Password">
+        <div class="error" id="passError">Passwords do not match</div>
+
+        <button onclick="validateForm()">Register</button>
+
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+        const passError = document.getElementById("passError");
+
+        passError.style.display = "none";
+
+        if(password !== confirmPassword) {
+            passError.style.display = "block";
+            return;
+        }
+
+        alert("Frontend validation passed. Backend not connected yet.");
+    }
+</script>
+
+</body>
+</html>
